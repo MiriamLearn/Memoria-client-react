@@ -24,7 +24,7 @@ export const Login= ({ onLoginSuccess }: { onLoginSuccess: () => void }) => {
 
   const handleLogin = async() => {
     try{
-      const res =await axios.post('http://localhost:3000/api/user/login',{
+      const res =await axios.post('https://localhost:7251/api/User/login',{
         email:email,
         password:password
       });

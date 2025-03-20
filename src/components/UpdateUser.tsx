@@ -11,12 +11,11 @@ import UserContext from '../context/UserContext';
 const UpdateUser: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const {dispatch } = useContext(UserContext);
   const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
+    Name: '',
     email: '',
     password: '',
-    address: '',
-    phone: '',
+    // address: '',
+    // phone: '',
   });
 
   const handleUpdate = () => {

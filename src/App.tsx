@@ -5,6 +5,7 @@ import UserAvatar from './components/UserAvatar'
 import { UserProvider } from './context/UserContext'
 import { Box } from '@mui/material';
 import { Register } from './components/Registration';
+import FileUploader from './components/FileUpLoader';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,6 +29,7 @@ function App() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' ,marginTop:'22px'}}>
             <Login onLoginSuccess={handleLoginSuccess} />
             <Register />
+            <FileUploader/>
           </Box>
           </>
         )}

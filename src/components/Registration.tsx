@@ -16,8 +16,8 @@ export const Register = () => {
     const { dispatch } = context;
     const [open, setOpen] = useState(false);
     const [formData, setFormData] = useState({
-        firstName: '', lastName: '', email: '',
-        password: '', address: '', phone: '',
+        Name: '',  email: '',
+        password: ''
     });
     const [errorMessage, setErrorMessage] = useState('');
     const [error, setError] = useState<any>(null);
@@ -25,12 +25,13 @@ export const Register = () => {
     const handleSave = async () => {
         try {
             console.log(formData);
-            const res = await axios.post('http://localhost:3000/api/user/register',
+            const res = await axios.post('https://localhost:7251/api/User',
                 {
                     email: formData.email, password: formData.password,
-                    firstName: formData.firstName, lastName: formData.lastName,
-                    address: formData.address, phone: formData.phone,
+                    Name: formData.Name, 
+                    // address: formData.address, phone: formData.phone,
                 });
+                console.log(res.data.success);
             if (res.data.success) {
                 dispatch({
                     type: 'CREATE_USER',
@@ -38,8 +39,7 @@ export const Register = () => {
                 });
                 alert('Registration successful!');
                 setFormData({
-                    firstName: '', lastName: '', email: '',
-                    address: '', phone: '', password: '',
+                    Name: '', email: '', password: '',
                 });
                 setOpen(false);
             } else {
