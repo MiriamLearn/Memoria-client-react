@@ -14,8 +14,6 @@ const UpdateUser: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     Name: '',
     email: '',
     password: '',
-    // address: '',
-    // phone: '',
   });
 
   const handleUpdate = () => {

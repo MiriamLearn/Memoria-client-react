@@ -32,8 +32,11 @@ export const Login= ({ onLoginSuccess }: { onLoginSuccess: () => void }) => {
         type: 'CREATE_USER',
         payload: res.data.user
       });
-      console.log(res.data.message);
-      if (res.data.message) {
+      console.log('Full response:', res);
+      console.log('Response data:', res.data);
+      console.log('Response data user:', res.data.user);
+      console.log(res.data.success);
+      if (res.data.success) {
         alert('Login successful!');
         setOpen(false);
         onLoginSuccess();

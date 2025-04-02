@@ -1,7 +1,7 @@
 
 export type User = {
     id:number
-    Name: string;
+    name: string;
     // lastName: string;
     email: string;
     password: string;
@@ -15,7 +15,7 @@ export type User = {
   
   export const initialState: User = {
     id:0,
-    Name: "",
+    name: "",
     // lastName: "",
     email: "",
     password: "",

@@ -27,11 +27,12 @@ export const Register = () => {
             console.log(formData);
             const res = await axios.post('https://localhost:7251/api/User',
                 {
-                    email: formData.email, password: formData.password,
+                    email: formData.email,
+                    password: formData.password,
                     Name: formData.Name, 
-                    // address: formData.address, phone: formData.phone,
                 });
-                console.log(res.data.success);
+            console.log('Full response:', res);
+            console.log('Response data:', res.data);
             if (res.data.success) {
                 dispatch({
                     type: 'CREATE_USER',
