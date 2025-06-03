@@ -2,11 +2,8 @@
 export type User = {
     id:number
     name: string;
-    // lastName: string;
     email: string;
     password: string;
-    // address: string;
-    // phone: string;
   };
   export type UserAction =
     | { type: 'CREATE_USER'; payload: User }
@@ -16,11 +13,8 @@ export type User = {
   export const initialState: User = {
     id:0,
     name: "",
-    // lastName: "",
     email: "",
     password: "",
-    // address: "",
-    // phone: ""
   };
   
   export const userReducer = (state: User, action: UserAction): User => {

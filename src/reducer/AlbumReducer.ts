@@ -4,6 +4,7 @@ export type Album = {
     id: number;
     name: string;
     imageList: Image[]
+    userId: number;
 };
 
 export type AlbumAction =

@@ -12,7 +12,7 @@ export type ImageAction =
     | { type: 'UPDATE_IMAGE'; payload: Partial<Image> & { id: number } }
     | { type: 'DELETE_IMAGE'; payload: { id: number } };
 export const initialImageState: Image[] = [];
-export const imageReducer = (state: Image[]= initialImageState, action: ImageAction): Image[] => {
+export const imageReducer = (state: Image[] = initialImageState, action: ImageAction): Image[] => {
     switch (action.type) {
         case 'SET_IMAGES':
             return action.payload.filter(image => !image.isDeleted); // מסנן תמונות מחוקות;

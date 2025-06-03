@@ -16,7 +16,7 @@ export const Register = () => {
     const { dispatch } = context;
     const [open, setOpen] = useState(false);
     const [formData, setFormData] = useState({
-        Name: '',  email: '',
+        Name: '', email: '',
         password: ''
     });
     const [errorMessage, setErrorMessage] = useState('');
@@ -29,7 +29,7 @@ export const Register = () => {
                 {
                     email: formData.email,
                     password: formData.password,
-                    Name: formData.Name, 
+                    Name: formData.Name,
                 });
             console.log('Full response:', res);
             console.log('Response data:', res.data);
@@ -53,7 +53,20 @@ export const Register = () => {
     };
     return (
         <>
-            <Button variant="contained" onClick={() => setOpen(true)} sx={{ backgroundColor: '#b7a710', color: 'white', padding: 1, zIndex: 1300 }}>
+            <Button variant="contained" onClick={() => setOpen(true)}
+                sx={{
+                    backgroundColor: '#f49b85',
+                    color: 'white',
+                    paddingX: 4, // מרחיב את הצדדים (left/right)
+                    paddingY: 2, // מגדיל את הגובה (top/bottom)
+                    fontSize: '1.1rem', // מגדיל את הגופן
+                    fontWeight: 'bold', // מדגיש
+                    borderRadius: 2,
+                    zIndex: 1300,
+                    '&:hover': {
+                        backgroundColor: '#e98971',
+                    },
+                }}>
                 Register
             </Button>
             <Modal open={open} onClose={() => setOpen(false)}>
@@ -77,6 +90,15 @@ export const Register = () => {
                             onChange={(e) =>
                                 setFormData({ ...formData, [key]: e.target.value })
                             }
+                            sx={{
+                                '& label': { color: '#f49b85' },
+                                '& label.Mui-focused': { color: '#f49b85' },
+                                '& .MuiOutlinedInput-root': {
+                                    '& fieldset': { borderColor: '#f49b85' },
+                                    '&:hover fieldset': { borderColor: '#f49b85' },
+                                    '&.Mui-focused fieldset': { borderColor: '#f49b85' },
+                                },
+                            }}
 
                         />
                     ))}
@@ -86,7 +108,7 @@ export const Register = () => {
                     <Button
                         onClick={handleSave}
                         variant="contained"
-                        sx={{ backgroundColor: '#b7a710', color: 'white', padding: 1 }}
+                        sx={{ backgroundColor: '#f49b85', color: 'white', padding: 1 }}
                     >
                         Save
                     </Button>
@@ -96,3 +118,6 @@ export const Register = () => {
         </>
     );
 }
+
+
+export default Register;
