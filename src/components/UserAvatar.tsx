@@ -1,8 +1,8 @@
 import type React from "react"
 import { useContext, useState } from "react"
-import { Avatar, Box, Typography, Menu, MenuItem, ListItemIcon, Divider, IconButton, Tooltip } from "@mui/material"
+import { Avatar, Box, Typography, Menu, MenuItem, ListItemIcon, IconButton, Tooltip } from "@mui/material"
 import UserContext from "../context/UserContext"
-import { LogOut, Settings, User } from "lucide-react"
+import { LogOut } from "lucide-react"
 
 interface UserAvatarProps {
   onLogout: () => void
