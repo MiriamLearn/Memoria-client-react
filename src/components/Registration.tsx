@@ -157,7 +157,7 @@ export const Register = () => {
   const handleSave = async () => {
     try {
       console.log(formData)
-      const res = await axios.post<RegisterResponse>("https://localhost:7251/api/User", {
+      const res = await axios.post<RegisterResponse>(`${process.env.REACT_APP_API_URL}/api/User`, {
         email: formData.email,
         password: formData.password,
         Name: formData.Name,

@@ -641,7 +641,7 @@ const AlbumList = () => {
 
   const fetchAlbums = async () => {
     try {
-      const response = await axios.get<Album[]>(`https://localhost:7251/api/album`, {
+      const response = await axios.get<Album[]>(`${process.env.REACT_APP_API_URL}/api/album`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -653,7 +653,7 @@ const AlbumList = () => {
       const albumsWithDetails = await Promise.all(
         response.data.map(async (album: Album) => {
           try {
-            const detailResponse = await axios.get<Album>(`https://localhost:7251/api/album/${album.id}`, {
+            const detailResponse = await axios.get<Album>(`${process.env.REACT_APP_API_URL}/api/album/${album.id}`, {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
@@ -696,7 +696,7 @@ const AlbumList = () => {
     }
 
     try {
-      const response = await axios.post<Album>("https://localhost:7251/api/album", newAlbum, {
+      const response = await axios.post<Album>(`${process.env.REACT_APP_API_URL}/api/album`, newAlbum, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -715,7 +715,7 @@ const AlbumList = () => {
         name: newName,
       }
 
-      await axios.put<Album>(`https://localhost:7251/api/album/${albumId}`, updatedAlbum, {
+      await axios.put<Album>(`${process.env.REACT_APP_API_URL}/api/album/${albumId}`, updatedAlbum, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -747,7 +747,7 @@ const AlbumList = () => {
 
   const handleDeleteAlbum = async (albumId: number) => {
     try {
-      await axios.delete(`https://localhost:7251/api/album/${albumId}`, {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/album/${albumId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -765,7 +765,7 @@ const AlbumList = () => {
 
   const confirmDeleteAlbum = async (albumId: number) => {
     try {
-      const response = await axios.get<Album>(`https://localhost:7251/api/album/${albumId}`, {
+      const response = await axios.get<Album>(`${process.env.REACT_APP_API_URL}/api/album/${albumId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

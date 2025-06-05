@@ -559,7 +559,7 @@ const AlbumPage = () => {
     try {
       const token = localStorage.getItem("token")
 
-      const response = await axios.get<AlbumResponse>(`https://localhost:7251/api/album/${albumId}`, {
+      const response = await axios.get<AlbumResponse>(`${process.env.REACT_APP_API_URL}/api/album/${albumId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -592,7 +592,7 @@ const AlbumPage = () => {
     if (!selectedFile || selectedImageId === null) return
 
     try {
-      const response = await axios.get<PresignedUrlResponse>("https://localhost:7251/api/upload/presigned-url", {
+      const response = await axios.get<PresignedUrlResponse>(`${process.env.REACT_APP_API_URL}/api/upload/presigned-url`, {
         params: { imageName: selectedFile.name, albumId: albumId },
       })
 
@@ -612,7 +612,7 @@ const AlbumPage = () => {
         albumId: albumId,
       }
 
-      await axios.put<Image>(`https://localhost:7251/api/image/${selectedImageId}`, updatedImage)
+      await axios.put<Image>(`${process.env.REACT_APP_API_URL}/api/image/${selectedImageId}`, updatedImage)
 
       dispatch({ type: "UPDATE_IMAGE", payload: updatedImage })
       handleCloseModal()
@@ -627,7 +627,7 @@ const AlbumPage = () => {
     }
 
     try {
-      await axios.delete(`https://localhost:7251/api/image/${id}`)
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/image/${id}`)
       dispatch({ type: "DELETE_IMAGE", payload: { id } })
     } catch (error) {
       console.error("שגיאה במחיקת התמונה:", error)
