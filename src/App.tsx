@@ -165,7 +165,7 @@ function App() {
                   >
                     <img
                       // src="/src/assets/memoria2.png"
-                      src="../public/memoria2.png"
+                      src="/memoria2.png"
                       alt="Memoria Logo"
                       style={{
                         width: "400px",
