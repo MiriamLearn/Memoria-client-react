@@ -161,7 +161,7 @@ export const Login = ({ onLoginSuccess }: { onLoginSuccess: () => void }) => {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post<LoginResponse>("https://memoria-api-pukg.onrender.com/api/User/login", {
+    const res = await axiosInstance.post<LoginResponse>("/api/User/login", {
         email: email,
         password: password,
       })
