@@ -135,10 +135,10 @@
 import { useContext, useState } from "react"
 import { Button, Modal, Box, TextField, Typography } from "@mui/material"
 import UserContext from "../context/UserContext"
-// import axios from "axios"
+import axios from "axios"
 import ErrorSnackbar from "./Error"
 import type { User } from "../reducer/UserReducer"
-import axiosInstance from "../axiosInstance"
+// import axiosInstance from "../axiosInstance"
 
 // טיפוסים לתשובות API
 interface LoginResponse {
@@ -162,13 +162,7 @@ export const Login = ({ onLoginSuccess }: { onLoginSuccess: () => void }) => {
 
   const handleLogin = async () => {
     try {
-
-    
-
-
-
-
-      const res = await axiosInstance.post<LoginResponse>("/api/User/login", {
+      const res = await axios.post<LoginResponse>("https://memoria-api-pukg.onrender.com/api/User/login", {
         email: email,
         password: password,
       })

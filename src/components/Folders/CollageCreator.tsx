@@ -1317,7 +1317,7 @@ const CollageCreator = () => {
   const fetchAlbumData = async () => {
     try {
       const token = localStorage.getItem("token")
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/album/${albumId}`, {
+      const response = await axios.get(`https://memoria-api-pukg.onrender.com/api/album/${albumId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -1349,7 +1349,7 @@ const CollageCreator = () => {
 
       console.log("📡 Sending request to AI service...")
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/AICollage/design`,
+        "https://memoria-api-pukg.onrender.com/api/AICollage/design",
         { prompt: aiPrompt },
         {
           headers: {
@@ -1475,7 +1475,7 @@ const CollageCreator = () => {
         const token = localStorage.getItem("token")
 
         // קבלת התמונה דרך השרת שלך
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/image/proxy`, {
+        const response = await axios.get("https://memoria-api-pukg.onrender.com/api/image/proxy", {
           params: { url: imageUrl },
           headers: {
             Authorization: `Bearer ${token}`,

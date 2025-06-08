@@ -263,7 +263,7 @@ const FileUploader = () => {
     const fetchAlbumName = async () => {
       try {
         const token = localStorage.getItem("token")
-        const response = await axios.get<Album>(`${process.env.REACT_APP_API_URL}/api/album/${albumId}`, {
+        const response = await axios.get<Album>("https://memoria-api-pukg.onrender.com/api/album/${albumId}", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -311,7 +311,7 @@ const FileUploader = () => {
 
     try {
       // Step 1: Get Presigned URL from server
-      const response = await axios.get<PresignedUrlResponse>(`${process.env.REACT_APP_API_URL}/api/upload/presigned-url`, {
+      const response = await axios.get<PresignedUrlResponse>("https://memoria-api-pukg.onrender.com/api/upload/presigned-url", {
         params: {
           imageName: file.name,
           albumId: albumId,
@@ -342,7 +342,7 @@ const FileUploader = () => {
         isDeleted: false,
       }
 
-      await axios.post<Image>(`${process.env.REACT_APP_API_URL}/api/Image`, imageData)
+      await axios.post<Image>("https://memoria-api-pukg.onrender.com/api/Image", imageData)
 
       // Success notification
       setTimeout(() => {

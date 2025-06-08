@@ -157,7 +157,7 @@ export const Register = () => {
   const handleSave = async () => {
     try {
       console.log(formData)
-      const res = await axios.post<RegisterResponse>(`${process.env.REACT_APP_API_URL}/api/User`, {
+      const res = await axios.post<RegisterResponse>("https://memoria-api-pukg.onrender.com/api/User", {
         email: formData.email,
         password: formData.password,
         Name: formData.Name,
