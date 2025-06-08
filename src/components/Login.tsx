@@ -135,7 +135,7 @@
 import { useContext, useState } from "react"
 import { Button, Modal, Box, TextField, Typography } from "@mui/material"
 import UserContext from "../context/UserContext"
-import axios from "axios"
+// import axios from "axios"
 import ErrorSnackbar from "./Error"
 import type { User } from "../reducer/UserReducer"
 import axiosInstance from "../axiosInstance"
