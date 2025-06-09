@@ -1,50 +1,180 @@
+//------------------------good version without homePage
+// import { useState } from "react"
+// import { Login } from "./components/Login"
+// import UserAvatar from "./components/UserAvatar"
+// import { UserProvider } from "./context/UserContext"
+// import { Box, Container, ThemeProvider, createTheme, Typography } from "@mui/material"
+// import { Register } from "./components/Registration"
+// import { RouterProvider } from "react-router-dom"
+// import Router from "./components/Router"
+// import { motion } from "framer-motion"
 
-// import { useState } from 'react';
-// import {Login} from './components/Login';
-// import UserAvatar from './components/UserAvatar';
-// import { UserProvider } from './context/UserContext';
-// import { Box } from '@mui/material';
-// import { Register } from './components/Registration';
-// // import FileUploader from './components/Files/FileUpLoader';
-// import {  RouterProvider} from 'react-router-dom';
-// // import ShowFiles from './components/Files/showFiles';
-// // import AlbumList from './components/Folders/AlbumList';
-// // import AlbumPage from './components/Folders/AlbumPage';
-// import Router from './components/Router';
+// const theme = createTheme({
+//   direction: "rtl",
+//   palette: {
+//     primary: {
+//       main: "#6366f1",
+//       dark: "#4f46e5",
+//       light: "#818cf8",
+//     },
+//     secondary: {
+//       main: "#ec4899",
+//       dark: "#db2777",
+//       light: "#f472b6",
+//     },
+//     background: {
+//       default: "#fdf5f0", // בז’ בהיר כמו בלוגו
+//       paper: "#ffffff",
+//     },
+//   },
+//   typography: {
+//     fontFamily: '"Heebo", "Roboto", "Arial", sans-serif',
+//   },
+//   components: {
+//     MuiButton: {
+//       styleOverrides: {
+//         root: {
+//           borderRadius: 8,
+//           textTransform: "none",
+//           fontWeight: 600,
+//         },
+//       },
+//     },
+//     MuiCard: {
+//       styleOverrides: {
+//         root: {
+//           borderRadius: 12,
+//           boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+//         },
+//       },
+//     },
+//   },
+// })
 
 // function App() {
-//   const [isLoggedIn, setIsLoggedIn] = useState(false);
+//   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
 //   const handleLoginSuccess = () => {
-//     setIsLoggedIn(true);
-//   };
+//     setIsLoggedIn(true)
+//   }
+
+//   const handleLogout = () => {
+//     localStorage.removeItem("token")
+//     localStorage.removeItem("userId")
+//     setIsLoggedIn(false)
+//   }
 
 //   return (
-//       <UserProvider>
-//         {isLoggedIn ? (
-//           <>
-//             {/* אם המשתמש מחובר, מציגים את האווטאר, האלבומים ועוד */}
-//             <Box display="flex" sx={{ mt: 8 }}>
-//               <UserAvatar />
-//             </Box>
-//             <RouterProvider router={Router} />
-//           </>
-//         ) : (
-//           /* אם המשתמש לא מחובר, מציגים את עמוד ההתחברות */
-//           <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '22px' }}>
-//             <Login onLoginSuccess={handleLoginSuccess} />
-//             <Register />
-//           </Box>
-//         )}
-//       </UserProvider>
-//   );
+//     <ThemeProvider theme={theme}>
+//       <Box sx={{  minHeight: "100vh" }}>
+//         <UserProvider>
+//           <Container maxWidth="lg" sx={{ flexGrow: 1, py: 4 }}>
+//             {isLoggedIn ? (
+//               <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+//                 <Box
+//                   sx={{
+//                     display: "flex",
+//                     flexDirection: "column",
+//                     minHeight: "100vh",
+//                   }}
+//                 >
+//                   <Box
+//                     sx={{
+//                       display: "flex",
+//                       justifyContent: "flex-start",
+//                       mb: 4,
+//                       position: "sticky",
+//                       top: 0,
+//                       zIndex: 1100,
+//                       // backgroundColor: "background.default",
+//                       py: 2,
+//                       borderBottom: "1px solid",
+//                       borderColor: "divider",
+//                     }}
+//                   >
+//                     <UserAvatar onLogout={handleLogout} />
+//                   </Box>
+//                   <Box sx={{ flexGrow: 1 }}>
+//                     <RouterProvider router={Router} />
+//                   </Box>
+//                 </Box>
+//               </motion.div>
+//             ) : (
+//               <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
+//                 <Box
+//                   sx={{
+//                     display: "flex",
+//                     flexDirection: "column",
+//                     alignItems: "center",
+//                     justifyContent: "center",
+//                     gap: 4,
+//                     minHeight: "80vh",
+//                   }}
+//                 >
+//                   {/* Logo Section */}
+//                   <Box
+//                     sx={{
+//                       display: "flex",
+//                       flexDirection: "column",
+//                       alignItems: "center",
+//                       mb: 4,
+//                     }}
+//                   >
+//                     <img
+//                       // src="/src/assets/memoria2.png"
+//                       src="/memoria2.png"
+//                       alt="Memoria Logo"
+//                       style={{
+//                         width: "400px",
+//                         height: "320px",
+//                         objectFit: "contain",
+//                         marginBottom: "16px",
+//                       }}
+//                     />
+//                     {/* <Typography variant="subtitle1" color="text.secondary" textAlign="center">
+//                       שומרים רגעים, יוצרים זיכרונות
+//                     </Typography> */}
+//                     <Typography
+//                       variant="h5" // מגדיל את הגופן
+//                       fontWeight="bold" // מדגיש
+//                       color="#f49b85"
+//                       textAlign="center"
+//                     >
+//                       שומרים רגעים, יוצרים זיכרונות
+//                     </Typography>
+//                   </Box>
+
+//                   {/* Login/Register Forms */}
+//                   <Box
+//                     sx={{
+//                       display: "flex",
+//                       flexDirection: { xs: "column", sm: "row" },
+//                       alignItems: "center",
+//                       justifyContent: "center",
+//                       gap: 4,
+//                     }}
+//                   >
+//                     <Login onLoginSuccess={handleLoginSuccess} />
+//                     <Register />
+//                   </Box>
+//                 </Box>
+//               </motion.div>
+//             )}
+//           </Container>
+//         </UserProvider>
+//       </Box>
+//     </ThemeProvider>
+//   )
 // }
 
-// export default App;
+// export default App
 
+
+
+
+///////+++++++++++++++++version with HomePage
 import { useState } from "react"
 import { Login } from "./components/Login"
-import UserAvatar from "./components/UserAvatar"
 import { UserProvider } from "./context/UserContext"
 import { Box, Container, ThemeProvider, createTheme, Typography } from "@mui/material"
 import { Register } from "./components/Registration"
@@ -66,7 +196,7 @@ const theme = createTheme({
       light: "#f472b6",
     },
     background: {
-      default: "#fdf5f0", // בז’ בהיר כמו בלוגו
+      default: "#fdf5f0",
       paper: "#ffffff",
     },
   },
@@ -101,46 +231,25 @@ function App() {
     setIsLoggedIn(true)
   }
 
-  const handleLogout = () => {
-    localStorage.removeItem("token")
-    localStorage.removeItem("userId")
-    setIsLoggedIn(false)
-  }
+  // const handleLogout = () => {
+  //   localStorage.removeItem("token")
+  //   localStorage.removeItem("userId")
+  //   setIsLoggedIn(false)
+  // }
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{  minHeight: "100vh" }}>
+      <Box sx={{ minHeight: "100vh" }}>
         <UserProvider>
           <Container maxWidth="lg" sx={{ flexGrow: 1, py: 4 }}>
             {isLoggedIn ? (
-              <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    minHeight: "100vh",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "flex-start",
-                      mb: 4,
-                      position: "sticky",
-                      top: 0,
-                      zIndex: 1100,
-                      // backgroundColor: "background.default",
-                      py: 2,
-                      borderBottom: "1px solid",
-                      borderColor: "divider",
-                    }}
-                  >
-                    <UserAvatar onLogout={handleLogout} />
-                  </Box>
-                  <Box sx={{ flexGrow: 1 }}>
-                    <RouterProvider router={Router} />
-                  </Box>
-                </Box>
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
+              >
+                <RouterProvider router={Router} />
               </motion.div>
             ) : (
               <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
@@ -154,7 +263,6 @@ function App() {
                     minHeight: "80vh",
                   }}
                 >
-                  {/* Logo Section */}
                   <Box
                     sx={{
                       display: "flex",
@@ -164,7 +272,6 @@ function App() {
                     }}
                   >
                     <img
-                      // src="/src/assets/memoria2.png"
                       src="/memoria2.png"
                       alt="Memoria Logo"
                       style={{
@@ -174,20 +281,11 @@ function App() {
                         marginBottom: "16px",
                       }}
                     />
-                    {/* <Typography variant="subtitle1" color="text.secondary" textAlign="center">
-                      שומרים רגעים, יוצרים זיכרונות
-                    </Typography> */}
-                    <Typography
-                      variant="h5" // מגדיל את הגופן
-                      fontWeight="bold" // מדגיש
-                      color="#f49b85"
-                      textAlign="center"
-                    >
+                    <Typography variant="h5" fontWeight="bold" color="#f49b85" textAlign="center">
                       שומרים רגעים, יוצרים זיכרונות
                     </Typography>
                   </Box>
 
-                  {/* Login/Register Forms */}
                   <Box
                     sx={{
                       display: "flex",
@@ -211,544 +309,3 @@ function App() {
 }
 
 export default App
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////version 4 trying
-// import { Dialog, DialogTitle, DialogContent, DialogActions } from "@mui/material"
-// import { useReducer, useEffect, useState } from "react"
-// import axios from "axios"
-// import { albumReducer, initialAlbumState, type Album } from "../../reducer/AlbumReducer"
-// import {
-//   Button,
-//   TextField,
-//   Card,
-//   CardContent,
-//   Typography,
-//   Grid,
-//   CardActionArea,
-//   Box,
-//   CardMedia,
-//   IconButton,
-//   Tooltip,
-//   Skeleton,
-//   Chip,
-//   Divider,
-// } from "@mui/material"
-// import { useNavigate } from "react-router-dom"
-// import { Plus, Pencil, Trash2, ImageIcon, AlertCircle, FolderPlus } from "lucide-react"
-// import { motion } from "framer-motion"
-
-// // הגדרת צבעים מותאמים אישית
-// const CUSTOM_COLOR = "#f49b85" // צבע כתום-ורוד
-// const CUSTOM_COLOR_LIGHT = "rgba(244, 155, 133, 0.15)"  // גרסה שקופה של אותו צבע
-
-
-// const AlbumList = () => {
-//   const [albums, dispatch] = useReducer(albumReducer, initialAlbumState)
-//   const [loading, setLoading] = useState(true)
-//   const [newAlbumName, setNewAlbumName] = useState("")
-//   const [isDialogOpen, setIsDialogOpen] = useState(false)
-//   const [editingAlbum, setEditingAlbum] = useState<Album | null>(null)
-//   const [updatedName, setUpdatedName] = useState("")
-//   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
-//   const [albumToDelete, setAlbumToDelete] = useState<Album | null>(null)
-//   const token = localStorage.getItem("token")
-//   const navigate = useNavigate()
-
-//   useEffect(() => {
-//     fetchAlbums()
-//   }, [])
-
-//   const fetchAlbums = async () => {
-//     try {
-//       const response = await axios.get(`https://localhost:7251/api/album`, {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       })
-
-//       console.log("Albums data structure:", response.data)
-
-//       // בקש מידע מפורט על כל אלבום בנפרד
-//       const albumsWithDetails = await Promise.all(
-//         response.data.map(async (album: Album) => {
-//           try {
-//             const detailResponse = await axios.get(`https://localhost:7251/api/album/${album.id}`, {
-//               headers: {
-//                 Authorization: `Bearer ${token}`,
-//               },
-//             })
-//             console.log(`Album ${album.id} details:`, detailResponse.data)
-
-//             // סנן רק תמונות פעילות
-//             const activeImages = detailResponse.data.imageList?.filter((image: any) => !image.isDeleted) || []
-
-//             return {
-//               ...detailResponse.data,
-//               imageList: activeImages,
-//             }
-//           } catch (error) {
-//             console.error(`Error fetching details for album ${album.id}:`, error)
-//             return album
-//           }
-//         }),
-//       )
-
-//       console.log("Albums with details:", albumsWithDetails)
-//       dispatch({ type: "SET_ALBUMS", payload: albumsWithDetails })
-//     } catch (error) {
-//       console.error("שגיאה בטעינת האלבומים:", error)
-//     } finally {
-//       setLoading(false)
-//     }
-//   }
-
-//   const handleAddAlbum = async () => {
-//     if (!newAlbumName.trim()) {
-//       alert("שם האלבום לא יכול להיות ריק!")
-//       return
-//     }
-
-//     const newAlbum = {
-//       name: newAlbumName,
-//       images: [],
-//       userId: localStorage.getItem("userId"),
-//     }
-
-//     try {
-//       const response = await axios.post("https://localhost:7251/api/album", newAlbum, {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       })
-//       dispatch({ type: "CREATE_ALBUM", payload: response.data })
-//       handleCloseDialog()
-//     } catch (error) {
-//       console.error("שגיאה בהוספת אלבום חדש:", error)
-//     }
-//   }
-
-//   const handleUpdateAlbum = async (albumId: number, newName: string, album: Album) => {
-//     try {
-//       const updatedAlbum: Album = {
-//         ...album,
-//         name: newName,
-//       }
-
-//       await axios.put(`https://localhost:7251/api/album/${albumId}`, updatedAlbum, {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       })
-
-//       dispatch({ type: "UPDATE_ALBUM", payload: updatedAlbum })
-//     } catch (error) {
-//       console.error("שגיאה בעדכון האלבום:", error)
-//     }
-//   }
-
-//   const handleEditClick = (album: Album) => {
-//     setEditingAlbum(album)
-//     setUpdatedName(album.name)
-//   }
-
-//   const handleSaveClick = () => {
-//     if (editingAlbum) {
-//       handleUpdateAlbum(editingAlbum.id, updatedName, editingAlbum)
-//       setEditingAlbum(null)
-//       setUpdatedName("")
-//     }
-//   }
-
-//   const handleCloseDialog2 = () => {
-//     setEditingAlbum(null)
-//     setUpdatedName("")
-//   }
-
-//   const handleDeleteAlbum = async (albumId: number) => {
-//     try {
-//       await axios.delete(`https://localhost:7251/api/album/${albumId}`, {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       })
-//       dispatch({ type: "DELETE_ALBUM", payload: albumId })
-//     } catch (error: any) {
-//       if (error.response && error.response.status === 400) {
-//         alert("לא ניתן למחוק אלבום שמכיל תמונות!")
-//       } else {
-//         console.error("שגיאה במחיקת האלבום:", error)
-//         alert("שגיאה במחיקת האלבום. נסה שוב מאוחר יותר.")
-//       }
-//     }
-//   }
-
-//   const confirmDeleteAlbum = async (albumId: number) => {
-//     try {
-//       const response = await axios.get(`https://localhost:7251/api/album/${albumId}`, {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       })
-//       const fullAlbum: Album = response.data
-
-//       // Filter out deleted images for accurate count
-//       const activeImages = fullAlbum.imageList?.filter((image: any) => !image.isDeleted) || []
-//       const albumWithFilteredImages = {
-//         ...fullAlbum,
-//         imageList: activeImages,
-//       }
-
-//       setAlbumToDelete(albumWithFilteredImages)
-//       setDeleteDialogOpen(true)
-//     } catch (error) {
-//       console.error("שגיאה בטעינת פרטי האלבום:", error)
-//       alert("אירעה שגיאה בטעינת פרטי האלבום. נסה שוב מאוחר יותר.")
-//     }
-//   }
-
-//   const handleOpenDialog = () => {
-//     setIsDialogOpen(true)
-//   }
-
-//   const handleCloseDialog = () => {
-//     setIsDialogOpen(false)
-//     setNewAlbumName("")
-//   }
-
-//   const handleAlbumClick = (albumId: number) => {
-//     navigate(`/albums/${albumId}`)
-//   }
-
-//   if (loading) {
-//     return (
-//       <Box sx={{ p: 3 }}>
-//         <Typography variant="h4" gutterBottom align="center" sx={{ mb: 4 }}>
-//           <Skeleton width={200} sx={{ mx: "auto" }} />
-//         </Typography>
-//         <Grid container spacing={3}>
-//           {[1, 2, 3, 4, 5, 6].map((item) => (
-//             <Grid item xs={12} sm={6} md={4} key={item}>
-//               <Skeleton variant="rectangular" height={200} sx={{ borderRadius: 2 }} />
-//               <Skeleton height={30} width="60%" sx={{ mt: 1 }} />
-//               <Skeleton height={40} width="100%" sx={{ mt: 1 }} />
-//             </Grid>
-//           ))}
-//         </Grid>
-//       </Box>
-//     )
-//   }
-
-//   return (
-//     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-//       <Box sx={{ p: 3 }}>
-//         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 4 }}>
-//           <Typography variant="h4" fontWeight="bold">
-//             האלבומים שלי
-//           </Typography>
-//           <Button
-//             variant="contained"
-//             color="primary"
-//             startIcon={<FolderPlus size={18} />}
-//             onClick={handleOpenDialog}
-//             sx={{ borderRadius: 8, backgroundColor: "#f49b85" }}
-//           >
-//             אלבום חדש
-//           </Button>
-//         </Box>
-
-//         {albums.length === 0 ? (
-//           <Card sx={{ p: 4, textAlign: "center", borderRadius: 4 }}>
-//             <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
-//               <ImageIcon size={64} color="#f49b85" />
-//               <Typography variant="h6">אין אלבומים עדיין</Typography>
-//               <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-//                 צור את האלבום הראשון שלך כדי להתחיל לשמור זכרונות
-//               </Typography>
-//               <Button variant="contained" startIcon={<Plus size={18} />} sx={{ backgroundColor: "#f49b85" }} onClick={handleOpenDialog}>
-//                 צור אלבום חדש
-//               </Button>
-//             </Box>
-//           </Card>
-//         ) : (
-//           <Grid container spacing={3}>
-//             {albums.map((album, index) => (
-//               <Grid item xs={12} sm={6} md={4} key={album.id}>
-//                 <motion.div
-//                   initial={{ opacity: 0, y: 20 }}
-//                   animate={{ opacity: 1, y: 0 }}
-//                   transition={{ duration: 0.3, delay: index * 0.1 }}
-//                 >
-//                   <Card
-//                     sx={{
-//                       height: "100%",
-//                       display: "flex",
-//                       flexDirection: "column",
-//                       transition: "transform 0.3s, box-shadow 0.3s",
-//                       "&:hover": {
-//                         transform: "translateY(-5px)",
-//                         boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-//                       },
-//                     }}
-//                   >
-//                     <CardActionArea onClick={() => handleAlbumClick(album.id)} sx={{ flexGrow: 1 }}>
-//                       <CardMedia
-//                         component="div"
-//                         sx={{
-//                           height: 200,
-//                           backgroundColor: album.imageList?.length ? "transparent" : "rgba(99, 102, 241, 0.1)",
-//                           display: "flex",
-//                           alignItems: "center",
-//                           justifyContent: "center",
-//                         }}
-//                       >
-//                         {album.imageList && album.imageList.length > 0 ? (
-//                           <img
-//                             src={album.imageList[0].s3URL || "/placeholder.svg"}
-//                             alt={album.name}
-//                             style={{
-//                               width: "100%",
-//                               height: "100%",
-//                               objectFit: "cover",
-//                             }}
-//                             onError={(e) => {
-//                               console.log("Image failed to load:", album.imageList[0])
-//                               // Fallback to placeholder if image fails to load
-//                               e.currentTarget.style.display = "none"
-//                               // e.currentTarget.parentElement!.innerHTML =
-//                                 // '<div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #f49b85;"><svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>'
-//                                 e.currentTarget.parentElement!.innerHTML = `
-//                                 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: ${CUSTOM_COLOR}; background-color: ${CUSTOM_COLOR_LIGHT};">
-//                                   <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
-//                                     <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-//                                   </svg>
-//                                   <span style="margin-top: 8px; font-size: 12px; font-weight: 500;">תמונה לא זמינה</span>
-//                                 </div>
-//                               `
-                           
-//                               }}
-//                           />
-//                         ) : (
-//                           // <ImageIcon size={64} color="#f49b85" />
-//                           <Box
-//                           sx={{
-//                             display: "flex",
-//                             flexDirection: "column",
-//                             alignItems: "center",
-//                             justifyContent: "center",
-//                             height: "100%",
-//                             color: CUSTOM_COLOR,
-//                             gap: 1,
-//                           }}
-//                         >
-//                           <ImageIcon size={64} />
-//                           <Typography variant="caption" color="inherit" fontWeight="medium">
-//                             אלבום ריק
-//                           </Typography>
-//                         </Box>
-//                         )}
-//                       </CardMedia>
-//                       <CardContent sx={{ flexGrow: 1 }}>
-//                         <Typography variant="h6" component="h3" fontWeight="bold" gutterBottom>
-//                           {album.name}
-//                         </Typography>
-//                         <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}>
-//                           <Chip
-//                             label={`${Array.isArray(album.imageList) ? album.imageList.length : 0} תמונות`}
-//                             size="small"
-//                             color={Array.isArray(album.imageList) && album.imageList.length > 0 ? "primary" : "default"}
-//                             variant="outlined"
-//                             sx={{
-//                               color: "#f49b85",
-//                               borderColor: "#f49b85",
-//                               fontWeight: "bold",
-//                               "& .MuiChip-icon": {
-//                                 color: "#f49b85",
-//                               },
-//                             }}
-//                           />
-//                         </Box>
-//                       </CardContent>
-//                     </CardActionArea>
-//                     <Divider />
-//                     <Box sx={{ display: "flex", justifyContent: "space-between", p: 1 }}>
-//                       <Tooltip title="צפה באלבום">
-//                         <Button size="small" onClick={() => handleAlbumClick(album.id)} sx={{ flex: 1, color: "#f49b85" }}>
-//                           צפה באלבום
-//                         </Button>
-//                       </Tooltip>
-//                       <Tooltip title="ערוך">
-//                         <IconButton
-//                           size="small"
-//                           color="primary"
-//                           onClick={(e) => {
-//                             e.stopPropagation()
-//                             handleEditClick(album)
-//                           }}
-//                         >
-//                           <Pencil size={18} />
-//                         </IconButton>
-//                       </Tooltip>
-//                       <Tooltip title="מחק">
-//                         <IconButton
-//                           size="small"
-//                           color="error"
-//                           onClick={(e) => {
-//                             e.stopPropagation()
-//                             confirmDeleteAlbum(album.id)
-//                           }}
-//                         >
-//                           <Trash2 size={18} />
-//                         </IconButton>
-//                       </Tooltip>
-//                     </Box>
-//                   </Card>
-//                 </motion.div>
-//               </Grid>
-//             ))}
-//           </Grid>
-//         )}
-
-//         {/* Add Album Dialog */}
-//         <Dialog
-//           open={isDialogOpen}
-//           onClose={handleCloseDialog}
-//           PaperProps={{
-//             sx: { borderRadius: 3, p: 1 },
-//           }}
-//         >
-//           <DialogTitle sx={{ fontWeight: "bold" }}>הוסף אלבום חדש</DialogTitle>
-//           <DialogContent>
-//             <TextField
-//               autoFocus
-//               margin="dense"
-//               label="שם האלבום"
-//               type="text"
-//               fullWidth
-//               value={newAlbumName}
-//               onChange={(e) => setNewAlbumName(e.target.value)}
-//               variant="outlined"
-//               sx={{
-//                 mt: 1,
-//                 "& .MuiOutlinedInput-root": {
-//                   "& fieldset": {
-//                     borderColor: "#f49b85",
-//                   },
-//                   "&:hover fieldset": {
-//                     borderColor: "#f49b85",
-//                   },
-//                   "&.Mui-focused fieldset": {
-//                     borderColor: "#f49b85",
-//                   },
-//                 },
-//                 "& label.Mui-focused": {
-//                   color: "#f49b85",
-//                 },
-//               }}
-//               InputLabelProps={{
-//                 sx: { color: "#f49b85" },
-//               }}
-//             />
-//           </DialogContent>
-//           <DialogActions sx={{ p: 2 }}>
-//             <Button onClick={handleCloseDialog} color="inherit">
-//               ביטול
-//             </Button>
-//             <Button onClick={handleAddAlbum} variant="contained" disabled={!newAlbumName.trim()} sx={{
-//               backgroundColor: "#f49b85",
-//               "&:hover": {
-//                 backgroundColor: "#e68a76",
-//               },
-//             }}>
-//               הוסף
-//             </Button>
-//           </DialogActions>
-//         </Dialog>
-
-//         {/* Edit Album Dialog */}
-//         <Dialog
-//           open={Boolean(editingAlbum)}
-//           onClose={handleCloseDialog2}
-//           PaperProps={{
-//             sx: { borderRadius: 3, p: 1 },
-//           }}
-//         >
-//           <DialogTitle sx={{ fontWeight: "bold" }}>עריכת אלבום</DialogTitle>
-//           <DialogContent>
-//             <TextField
-//               autoFocus
-//               margin="dense"
-//               label="שם האלבום"
-//               type="text"
-//               fullWidth
-//               value={updatedName}
-//               onChange={(e) => setUpdatedName(e.target.value)}
-//               variant="outlined"
-//               sx={{ mt: 1 }}
-//             />
-//           </DialogContent>
-//           <DialogActions sx={{ p: 2 }}>
-//             <Button onClick={handleCloseDialog2} color="inherit">
-//               ביטול
-//             </Button>
-//             <Button onClick={handleSaveClick} variant="contained" disabled={!updatedName.trim()}>
-//               שמור
-//             </Button>
-//           </DialogActions>
-//         </Dialog>
-
-//         {/* Delete Confirmation Dialog */}
-//         <Dialog
-//           open={deleteDialogOpen}
-//           onClose={() => setDeleteDialogOpen(false)}
-//           PaperProps={{
-//             sx: { borderRadius: 3, p: 1 },
-//           }}
-//         >
-//           <DialogTitle sx={{ fontWeight: "bold", display: "flex", alignItems: "center", gap: 1 }}>
-//             <AlertCircle size={20} color="#f43f5e" />
-//             אישור מחיקת אלבום
-//           </DialogTitle>
-//           <DialogContent>
-//             <Typography>
-//               {albumToDelete?.imageList?.length
-//                 ? `האלבום "${albumToDelete.name}" מכיל ${albumToDelete.imageList.length} תמונות. האם אתה בטוח שברצונך למחוק אותו?`
-//                 : `האם אתה בטוח שברצונך למחוק את האלבום "${albumToDelete?.name}"?`}
-//             </Typography>
-//           </DialogContent>
-//           <DialogActions sx={{ p: 2 }}>
-//             <Button onClick={() => setDeleteDialogOpen(false)} color="inherit">
-//               ביטול
-//             </Button>
-//             <Button
-//               onClick={() => {
-//                 if (albumToDelete) {
-//                   handleDeleteAlbum(albumToDelete.id)
-//                 }
-//                 setDeleteDialogOpen(false)
-//               }}
-//               color="error"
-//               variant="contained"
-//             >
-//               מחק
-//             </Button>
-//           </DialogActions>
-//         </Dialog>
-//       </Box>
-//     </motion.div>
-//   )
-// }
-
-// export default AlbumList
